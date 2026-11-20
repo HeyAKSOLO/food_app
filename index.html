@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="BiteMap — discover restaurants, menus, and delivery status near you." />
+    <title>BiteMap — discover your next favourite meal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="nav-shell">
+        <a class="brand" href="#" aria-label="BiteMap home"><span class="brand-mark">✦</span> BiteMap</a>
+        <button class="location-pill" id="locationButton" type="button"><span>⌖</span><span><small>Delivering to</small><strong id="locationLabel">Indiranagar, Bengaluru</strong></span><span class="chevron">⌄</span></button>
+        <div class="nav-actions">
+          <button class="icon-button" type="button" id="searchFocus" aria-label="Focus search">⌕</button>
+          <button class="ghost-button" type="button" id="loginButton">Log in</button>
+          <button class="cart-button" type="button" id="cartButton">Bag <span class="cart-count" id="cartCount">0</span></button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-content">
+          <p class="eyebrow">GOOD FOOD, GOOD MOOD</p>
+          <h1>Find your next<br /><em>favourite</em> meal.</h1>
+          <p class="hero-copy">Explore the best places to eat, from neighbourhood gems to iconic kitchens.</p>
+          <div class="search-box" id="searchBox">
+            <span class="search-icon">⌕</span>
+            <input id="searchInput" type="search" placeholder="Search restaurants, dishes, or cuisines" autocomplete="off" />
+            <span class="search-shortcut">⌘ K</span>
+          </div>
+          <div class="quick-searches">
+            <span>Popular:</span><button type="button" data-search="biryani">Biryani</button><button type="button" data-search="pizza">Pizza</button><button type="button" data-search="coffee">Coffee</button><button type="button" data-search="south indian">South Indian</button>
+          </div>
+        </div>
+        <div class="hero-art" aria-hidden="true"><div class="sun"></div><div class="hero-circle"></div><div class="hero-note">Curated<br />for you <span>↗</span></div><div class="hero-food">🥟</div><div class="hero-leaf leaf-one">✦</div><div class="hero-leaf leaf-two">✦</div></div>
+      </section>
+
+      <section class="category-row section-shell">
+        <div class="section-heading compact"><div><p class="eyebrow">WHAT ARE YOU CRAVING?</p><h2>Browse by mood</h2></div><div class="category-arrows"><button type="button" aria-label="Previous category">←</button><button type="button" aria-label="Next category">→</button></div></div>
+        <div class="categories" id="categories">
+          <button class="category active" data-category="all"><span class="category-icon">✦</span><span>Everything</span></button>
+          <button class="category" data-category="delivery"><span class="category-icon">⌁</span><span>Fast delivery</span></button>
+          <button class="category" data-category="healthy"><span class="category-icon">♧</span><span>Healthy picks</span></button>
+          <button class="category" data-category="coffee"><span class="category-icon">☕</span><span>Coffee &amp; bakes</span></button>
+          <button class="category" data-category="date"><span class="category-icon">♡</span><span>Date night</span></button>
+          <button class="category" data-category="budget"><span class="category-icon">₹</span><span>Under ₹500</span></button>
+        </div>
+      </section>
+
+      <section class="section-shell restaurants-section">
+        <div class="section-heading"><div><p class="eyebrow">NEAR YOU · 2,400+ PLACES</p><h2>Made for your table</h2></div><button class="filter-button" type="button" id="filterButton">☷ <span>Filters</span></button></div>
+        <div class="filters-panel" id="filtersPanel">
+          <button class="filter-chip active" data-sort="recommended">Recommended</button><button class="filter-chip" data-sort="rating">Top rated</button><button class="filter-chip" data-sort="delivery">Fastest delivery</button><button class="filter-chip" data-sort="price">Price: low to high</button>
+        </div>
+        <div class="restaurant-grid" id="restaurantGrid"></div>
+        <div class="empty-state hidden" id="emptyState"><span>⌕</span><h3>No places found</h3><p>Try another restaurant, dish, or cuisine.</p><button class="text-button" id="clearSearch" type="button">Clear search</button></div>
+      </section>
+
+      <section class="feature-banner section-shell">
+        <div><p class="eyebrow">THE BITEMAP PROMISE</p><h2>Real places.<br /><em>Real cravings.</em></h2><p>Menus, opening hours, and delivery estimates in one honest little guide.</p></div><div class="promise-list"><span><b>01</b> Verified menus</span><span><b>02</b> Live availability</span><span><b>03</b> No hidden fees</span></div>
+      </section>
+    </main>
+
+    <footer><div class="footer-brand"><a class="brand" href="#"><span class="brand-mark">✦</span> BiteMap</a><p>Your city's good food, mapped.</p></div><div class="footer-links"><a href="#">About</a><a href="#">For restaurants</a><a href="#">Help &amp; feedback</a></div><span class="copyright">© 2025 BiteMap</span></footer>
+
+    <div class="modal-backdrop hidden" id="modalBackdrop"><article class="restaurant-modal" role="dialog" aria-modal="true" aria-label="Restaurant details"><button class="modal-close" id="modalClose" type="button" aria-label="Close">×</button><div id="modalContent"></div></article></div>
+    <aside class="cart-drawer" id="cartDrawer"><div class="drawer-head"><div><p class="eyebrow">YOUR ORDER</p><h2>Your bag</h2></div><button class="modal-close" id="cartClose" type="button" aria-label="Close cart">×</button></div><div id="cartItems" class="cart-items"></div><div class="cart-footer"><div><span>Subtotal</span><strong id="cartTotal">₹0</strong></div><button class="primary-button" id="checkoutButton" type="button">Continue without payment →</button><small>Payment is disabled in this demo.</small></div></aside>
+    <div class="toast" id="toast"></div>
+    <script src="app.js"></script>
+  </body>
+</html>

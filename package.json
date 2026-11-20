@@ -1,0 +1,20 @@
+{
+  "name": "bitemap",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Restaurant discovery and ordering app with Razorpay checkout",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "razorpay": "^2.9.4"
+  }
+}
